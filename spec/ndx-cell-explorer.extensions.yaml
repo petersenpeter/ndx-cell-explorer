@@ -1,8 +1,33 @@
 groups:
-- neurodata_type_def: TetrodeSeries
-  neurodata_type_inc: ElectricalSeries
-  doc: An extension of ElectricalSeries to include the tetrode ID for each time series.
-  attributes:
-  - name: trode_id
-    dtype: int32
-    doc: The tetrode ID.
+- neurodata_type_def: CellExplorerGeneral
+  neurodata_type_inc: LabMetaData
+  name: cell_explorer_general
+  doc: metadata necessary for full round trip in CellExplorer
+  datasets:
+  - name: saveAs
+    dtype: text
+    doc: doc for saveAs
+  groups:
+  - name: session
+    doc: holds session info
+    datasets:
+    - name: sessionType
+      dtype: text
+      doc: doc for sessionType
+    - name: spikeSortingMethod
+      dtype: text
+      doc: doc for spikeSortingMethod
+  - name: chanCoords
+    doc: channel coordinates
+    datasets:
+    - name: source
+      dtype: text
+      doc: doc for source
+    - name: layout
+      dtype: text
+      doc: doc for layout
+    - name: x
+      dtype: float
+      shape:
+      - null
+      doc: doc for x

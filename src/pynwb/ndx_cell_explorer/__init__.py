@@ -23,4 +23,4 @@ load_namespaces(ndx_cell_explorer_specpath)
 
 # TODO: import your classes here or define your class using get_class to make
 # them accessible at the package level
-TetrodeSeries = get_class('TetrodeSeries', 'ndx-cell-explorer')
+CellExplorerGeneral = get_class('CellExplorerGeneral', 'ndx-cell-explorer')

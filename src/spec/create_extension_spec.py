@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os.path
 
-from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttributeSpec
+from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttributeSpec, NWBDatasetSpec
 # TODO: import other spec classes as needed
 # from pynwb.spec import NWBDatasetSpec, NWBLinkSpec, NWBDtypeSpec, NWBRefSpec
 
@@ -22,27 +22,68 @@ def main():
     # to use your new data types.
     # all types included or used by the types specified here will also be
     # included.
-    ns_builder.include_type('ElectricalSeries', namespace='core')
+    ns_builder.include_type('LabMetaData', namespace='core')
 
     # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
     # for more information
-    tetrode_series = NWBGroupSpec(
-        neurodata_type_def='TetrodeSeries',
-        neurodata_type_inc='ElectricalSeries',
-        doc=('An extension of ElectricalSeries to include the tetrode ID for '
-             'each time series.'),
-        attributes=[
-            NWBAttributeSpec(
-                name='trode_id',
-                doc='The tetrode ID.',
-                dtype='int32'
+    CellExplorerGeneral = NWBGroupSpec(
+        neurodata_type_def='CellExplorerGeneral',
+        neurodata_type_inc='LabMetaData',
+        doc="metadata necessary for full round trip in CellExplorer",
+        name="cell_explorer_general",
+        groups=[
+            NWBGroupSpec(
+                doc="holds session info",
+                name="session",
+                datasets=[
+                    NWBDatasetSpec(
+                        doc="doc for sessionType",
+                        dtype="text",
+                        name="sessionType",
+                    ),
+                    NWBDatasetSpec(
+                        doc="doc for spikeSortingMethod",
+                        dtype="text",
+                        name="spikeSortingMethod",
+                    )
+                ]
+            ),
+            NWBGroupSpec(
+                doc="channel coordinates",
+                name="chanCoords",
+                datasets=[
+                    NWBDatasetSpec(
+                        doc="doc for source",
+                        dtype="text",
+                        name="source",
+                    ),
+                    NWBDatasetSpec(
+                        doc="doc for layout",
+                        dtype="text",
+                        name="layout",
+                    ),
+                    NWBDatasetSpec(
+                        doc="doc for x",
+                        dtype="float",
+                        shape=(None,),
+                        name="x"
+                    )
+                ]
             )
         ],
+        datasets=[
+            NWBDatasetSpec(
+                doc="doc for saveAs",
+                dtype="text",
+                name="saveAs",
+            ),
+
+        ]
     )
 
     # TODO: add all of your new data types to this list
-    new_data_types = [tetrode_series]
+    new_data_types = [CellExplorerGeneral]
 
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'spec'))
