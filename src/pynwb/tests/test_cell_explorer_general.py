@@ -34,7 +34,7 @@ class TestTetrodeSeriesConstructor(TestCase):
         )
 
 
-class TestTetrodeSeriesRoundtrip(TestCase):
+class CellExplorerGeneralSeriesRoundtrip(TestCase):
     """Simple roundtrip test for TetrodeSeries."""
 
     def setUp(self):

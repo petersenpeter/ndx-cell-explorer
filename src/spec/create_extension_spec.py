@@ -41,6 +41,7 @@ def main():
                         doc="doc for sessionType",
                         dtype="text",
                         name="sessionType",
+                        quantity='?'
                     ),
                     NWBDatasetSpec(
                         doc="doc for spikeSortingMethod",
@@ -67,6 +68,7 @@ def main():
                         doc="doc for x",
                         dtype="float",
                         shape=(None,),
+                        dims=('nchans',),
                         name="x"
                     )
                 ]

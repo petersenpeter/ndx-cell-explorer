@@ -14,6 +14,7 @@ groups:
     - name: sessionType
       dtype: text
       doc: doc for sessionType
+      quantity: '?'
     - name: spikeSortingMethod
       dtype: text
       doc: doc for spikeSortingMethod
@@ -28,6 +29,8 @@ groups:
       doc: doc for layout
     - name: x
       dtype: float
+      dims:
+      - nchans
       shape:
       - null
       doc: doc for x
