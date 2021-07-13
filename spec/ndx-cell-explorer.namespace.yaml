@@ -1,8 +1,8 @@
 namespaces:
 - author:
-  - Ben Dichter
+  - Peter Petersen
   contact:
-  - ben.dichter@catalystneuro.com
+  - petersen.peter@gmail.com
   doc: Extension for saving metadata necessary for full round trip in CellExplorer
   name: ndx-cell-explorer
   schema:
@@ -10,4 +10,4 @@ namespaces:
     neurodata_types:
     - LabMetaData
   - source: ndx-cell-explorer.extensions.yaml
-  version: 0.1.0
+  version: 0.1.1
